@@ -17,8 +17,20 @@ app.get("/", (req, res) => {
     res.send("Hello")
 })
 
-app.route('/*').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, 'public/index.html')); 
+app.route('/login').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, 'src/pages/Login.jsx')); 
+});
+
+app.route('/register').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, 'src/pages/Register.jsx')); 
+});
+
+app.route('/chat').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, 'src/pages/Chat.jsx')); 
+});
+
+app.route('/').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, 'src/pages/Login.jsx')); 
 });
 
 app.use("/api/auth",userRoutes)
