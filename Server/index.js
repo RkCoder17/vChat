@@ -18,19 +18,19 @@ app.get("/", (req, res) => {
 })
 
 app.route('/login').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, 'src/pages/Login.jsx')); 
+    return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
 });
 
 app.route('/register').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, 'src/pages/Register.jsx')); 
+    return res.sendFile(path.join(__dirname, './src/pages/Register.jsx')); 
 });
 
 app.route('/chat').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, 'src/pages/Chat.jsx')); 
+    return res.sendFile(path.join(__dirname, './src/pages/Chat.jsx')); 
 });
 
 app.route('/').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, 'src/pages/Login.jsx')); 
+    return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
 });
 
 app.use("/api/auth",userRoutes)
