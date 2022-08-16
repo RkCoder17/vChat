@@ -17,21 +17,28 @@ app.get("/", (req, res) => {
     res.send("Hello")
 })
 
-app.route('/login').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
-});
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+    app.get("/*", function(req, res) {
+        res.sendFile(path.join(__dirname, "./Client/build/index.html"));
+      });
+}
 
-app.route('/register').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, './src/pages/Register.jsx')); 
-});
+// app.route('/login').get(function(req, res) { 
+//     return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
+// });
 
-app.route('/chat').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, './src/pages/Chat.jsx')); 
-});
+// app.route('/register').get(function(req, res) { 
+//     return res.sendFile(path.join(__dirname, './src/pages/Register.jsx')); 
+// });
 
-app.route('/').get(function(req, res) { 
-    return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
-});
+// app.route('/chat').get(function(req, res) { 
+//     return res.sendFile(path.join(__dirname, './src/pages/Chat.jsx')); 
+// });
+
+// app.route('/').get(function(req, res) { 
+//     return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
+// });
 
 app.use("/api/auth",userRoutes)
 app.use("/api/messages",messageRoute) 
