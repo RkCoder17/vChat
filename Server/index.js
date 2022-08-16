@@ -17,6 +17,10 @@ app.get("/", (req, res) => {
     res.send("Hello")
 })
 
+app.route('/*').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, 'public/index.html')); 
+});
+
 app.use("/api/auth",userRoutes)
 app.use("/api/messages",messageRoute) 
 
