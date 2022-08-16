@@ -24,9 +24,9 @@ if(process.env.NODE_ENV === "production") {
       });
 }
 
-// app.route('/login').get(function(req, res) { 
-//     return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
-// });
+app.route('/login').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
+});
 
 // app.route('/register').get(function(req, res) { 
 //     return res.sendFile(path.join(__dirname, './src/pages/Register.jsx')); 
