@@ -24,24 +24,26 @@ if(process.env.NODE_ENV === "production") {
       });
 }
 
+app.use("/api/auth",userRoutes)
+app.use("/api/messages",messageRoute) 
+
 app.route('/login').get(function(req, res) { 
     return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
 });
 
-// app.route('/register').get(function(req, res) { 
-//     return res.sendFile(path.join(__dirname, './src/pages/Register.jsx')); 
-// });
+app.route('/register').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, './src/pages/Register.jsx')); 
+});
 
-// app.route('/chat').get(function(req, res) { 
-//     return res.sendFile(path.join(__dirname, './src/pages/Chat.jsx')); 
-// });
+app.route('/chat').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, './src/pages/Chat.jsx')); 
+});
 
-// app.route('/').get(function(req, res) { 
-//     return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
-// });
+app.route('/').get(function(req, res) { 
+    return res.sendFile(path.join(__dirname, './src/pages/Login.jsx')); 
+});
 
-app.use("/api/auth",userRoutes)
-app.use("/api/messages",messageRoute) 
+
 
 const url = process.env.uri;
 
