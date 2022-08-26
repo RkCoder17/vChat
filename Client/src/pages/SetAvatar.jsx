@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { setAvatarRoute } from '../utils/APIRoutes';
 import {Buffer} from 'buffer';
-import loader from '../assets/loade.gif'
+import loader from '../assets/loading.gif'
 
 const SetAvatar = () => {
     const api = "https://api.multiavatar.com/CZksYxvERc6O3V";
@@ -17,7 +17,7 @@ const SetAvatar = () => {
 
 const toastOptions = {
         position:"bottom-right",
-        autoClose : 8000,
+        autoClose : 5000,
         pauseOnHover : true,
         draggable :  true,
         theme : "dark",
@@ -50,6 +50,9 @@ const toastOptions = {
                 }
             } 
          };
+         function refreshPage() {
+          window.location.reload(false);
+        }
        
           useEffect( () => {
             async function fetchData() {
@@ -69,7 +72,8 @@ const toastOptions = {
     <>
     {  IsLoading ? <Containers>
        <img src={loader} alt="loader" className="loader" />
-         </Containers> : ( <Container>
+       <h1>Please Wait...</h1>
+                </Containers> : ( <Container>
         <div className="title-container">
         <h1>
             Pick an Avatar as a Profile Picture
@@ -91,6 +95,7 @@ const toastOptions = {
   <button onClick={setProfilePicture} className="submit-btn">
         Set as Profile Picture
       </button>
+      <button onClick={refreshPage} className="avatar-btn">New Avatars</button>
       <ToastContainer /> 
 </ Container>
  )}  
@@ -145,6 +150,22 @@ color: #fff;
   }
   .selected {
     border: 0.4rem solid #4e0eff;
+  }
+}
+.avatar-btn {
+  max-width: 180px;
+  margin-left: 1000px;
+  background-color: #4e0eff;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  &:hover {
+    background-color: #4e0eff;
   }
 }
 .submit-btn {

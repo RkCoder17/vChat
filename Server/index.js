@@ -13,9 +13,9 @@ app.use(express.json());
 
 
 app.use(express.static(path.join(__dirname+"/public")))
-app.get("/", (req, res) => {
-    res.send("Hello")
-})
+// app.get("/", (req, res) => {
+//     res.send("Hello")
+// })
 
 if(process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
